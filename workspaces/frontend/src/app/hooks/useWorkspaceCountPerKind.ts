@@ -8,6 +8,7 @@ export type WorkspaceCountPerKind = Record<
   WorkspaceCountPerKindImagePodConfig
 >;
 
+// TODO: This is temporary; we should get counts from the API directly
 export const useWorkspaceCountPerKind = (): WorkspaceCountPerKind => {
   const { api } = useNotebookAPI();
 
