@@ -4,12 +4,12 @@ import useFetchState, {
   FetchStateCallbackPromise,
 } from '~/shared/utilities/useFetchState';
 import { useNotebookAPI } from '~/app/hooks/useNotebookAPI';
-import { Namespace } from '~/shared/api/backendApiTypes';
+import { NamespacesNamespace } from '~/generated/OpenApiTypes';
 
-const useNamespaces = (): FetchState<Namespace[] | null> => {
+const useNamespaces = (): FetchState<NamespacesNamespace[] | null> => {
   const { api, apiAvailable } = useNotebookAPI();
 
-  const call = useCallback<FetchStateCallbackPromise<Namespace[] | null>>(
+  const call = useCallback<FetchStateCallbackPromise<NamespacesNamespace[] | null>>(
     (opts) => {
       if (!apiAvailable) {
         return Promise.reject(new Error('API not yet available'));

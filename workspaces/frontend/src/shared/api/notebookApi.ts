@@ -1,49 +1,47 @@
 import {
-  HealthCheckResponse,
-  Namespace,
-  Workspace,
-  WorkspaceCreate,
-  WorkspaceKind,
-  WorkspaceKindCreate,
-  WorkspaceKindPatch,
-  WorkspaceKindUpdate,
-  WorkspacePatch,
-  WorkspacePauseState,
-  WorkspaceUpdate,
-} from '~/shared/api/backendApiTypes';
+  HealthCheckHealthCheck,
+  NamespacesNamespace,
+  WorkspacekindsWorkspaceKind,
+  WorkspacesWorkspace,
+  WorkspacesWorkspaceCreate,
+} from '~/generated/OpenApiTypes';
 import { APIOptions, RequestData } from '~/shared/api/types';
+import { WorkspacePauseState } from '~/shared/api/backendApiTypes';
 
 // Health
-export type GetHealthCheck = (opts: APIOptions) => Promise<HealthCheckResponse>;
+export type GetHealthCheck = (opts: APIOptions) => Promise<HealthCheckHealthCheck>;
 
 // Namespace
-export type ListNamespaces = (opts: APIOptions) => Promise<Namespace[]>;
+export type ListNamespaces = (opts: APIOptions) => Promise<NamespacesNamespace[]>;
 
 // Workspace
-export type ListAllWorkspaces = (opts: APIOptions) => Promise<Workspace[]>;
-export type ListWorkspaces = (opts: APIOptions, namespace: string) => Promise<Workspace[]>;
+export type ListAllWorkspaces = (opts: APIOptions) => Promise<WorkspacesWorkspace[]>;
+export type ListWorkspaces = (
+  opts: APIOptions,
+  namespace: string,
+) => Promise<WorkspacesWorkspace[]>;
 export type GetWorkspace = (
   opts: APIOptions,
   namespace: string,
   workspace: string,
-) => Promise<Workspace>;
+) => Promise<WorkspacesWorkspace>;
 export type CreateWorkspace = (
   opts: APIOptions,
   namespace: string,
-  data: RequestData<WorkspaceCreate>,
-) => Promise<Workspace>;
+  data: RequestData<WorkspacesWorkspaceCreate>,
+) => Promise<WorkspacesWorkspace>;
 export type UpdateWorkspace = (
   opts: APIOptions,
   namespace: string,
   workspace: string,
-  data: RequestData<WorkspaceUpdate>,
-) => Promise<Workspace>;
+  data: RequestData<unknown>, // TODO: Replace `unknown` with specific type when available
+) => Promise<WorkspacesWorkspace>;
 export type PatchWorkspace = (
   opts: APIOptions,
   namespace: string,
   workspace: string,
-  data: RequestData<WorkspacePatch>,
-) => Promise<Workspace>;
+  data: RequestData<unknown>, // TODO: Replace `unknown` with specific type when available
+) => Promise<WorkspacesWorkspace>;
 export type DeleteWorkspace = (
   opts: APIOptions,
   namespace: string,
@@ -61,22 +59,25 @@ export type StartWorkspace = (
 ) => Promise<WorkspacePauseState>;
 
 // WorkspaceKind
-export type ListWorkspaceKinds = (opts: APIOptions) => Promise<WorkspaceKind[]>;
-export type GetWorkspaceKind = (opts: APIOptions, kind: string) => Promise<WorkspaceKind>;
+export type ListWorkspaceKinds = (opts: APIOptions) => Promise<WorkspacekindsWorkspaceKind[]>;
+export type GetWorkspaceKind = (
+  opts: APIOptions,
+  kind: string,
+) => Promise<WorkspacekindsWorkspaceKind>;
 export type CreateWorkspaceKind = (
   opts: APIOptions,
-  data: RequestData<WorkspaceKindCreate>,
-) => Promise<WorkspaceKind>;
+  data: RequestData<unknown>, // TODO: Replace `unknown` with specific type when available
+) => Promise<WorkspacekindsWorkspaceKind>;
 export type UpdateWorkspaceKind = (
   opts: APIOptions,
   kind: string,
-  data: RequestData<WorkspaceKindUpdate>,
-) => Promise<WorkspaceKind>;
+  data: RequestData<unknown>, // TODO: Replace `unknown` with specific type when available
+) => Promise<WorkspacekindsWorkspaceKind>;
 export type PatchWorkspaceKind = (
   opts: APIOptions,
   kind: string,
-  data: RequestData<WorkspaceKindPatch>,
-) => Promise<WorkspaceKind>;
+  data: RequestData<unknown>, // TODO: Replace `unknown` with specific type when available
+) => Promise<WorkspacekindsWorkspaceKind>;
 export type DeleteWorkspaceKind = (opts: APIOptions, kind: string) => Promise<void>;
 
 export type NotebookAPIs = {

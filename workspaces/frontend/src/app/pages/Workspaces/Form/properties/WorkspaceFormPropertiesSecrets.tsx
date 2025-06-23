@@ -18,11 +18,11 @@ import {
   HelperText,
   HelperTextItem,
 } from '@patternfly/react-core';
-import { WorkspacePodSecretMount } from '~/shared/api/backendApiTypes';
+import { WorkspacesPodSecretMount } from '~/generated/OpenApiTypes';
 
 interface WorkspaceFormPropertiesSecretsProps {
-  secrets: WorkspacePodSecretMount[];
-  setSecrets: (secrets: WorkspacePodSecretMount[]) => void;
+  secrets: WorkspacesPodSecretMount[];
+  setSecrets: (secrets: WorkspacesPodSecretMount[]) => void;
 }
 
 const DEFAULT_MODE_OCTAL = (420).toString(8);
@@ -33,7 +33,7 @@ export const WorkspaceFormPropertiesSecrets: React.FC<WorkspaceFormPropertiesSec
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [formData, setFormData] = useState<WorkspacePodSecretMount>({
+  const [formData, setFormData] = useState<WorkspacesPodSecretMount>({
     secretName: '',
     mountPath: '',
     defaultMode: parseInt(DEFAULT_MODE_OCTAL, 8),

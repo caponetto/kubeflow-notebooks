@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, List, ListItem } from '@patternfly/react-core';
-import { WorkspaceKind } from '~/shared/api/backendApiTypes';
 import { WorkspaceCountPerKind } from '~/app/hooks/useWorkspaceCountPerKind';
 import { useTypedNavigate } from '~/app/routerHelper';
+import { WorkspacekindsWorkspaceKind } from '~/generated/OpenApiTypes';
 
 type WorkspaceDetailsImagesProps = {
-  workspaceKind: WorkspaceKind;
+  workspaceKind: WorkspacekindsWorkspaceKind;
   workspaceCountPerKind: WorkspaceCountPerKind;
 };
 

@@ -12,14 +12,14 @@ import {
   TabContentBody,
   TabContent,
 } from '@patternfly/react-core';
-import { Workspace } from '~/shared/api/backendApiTypes';
 import { WorkspaceDetailsOverview } from '~/app/pages/Workspaces/Details/WorkspaceDetailsOverview';
 import { WorkspaceDetailsActions } from '~/app/pages/Workspaces/Details/WorkspaceDetailsActions';
 import { WorkspaceDetailsActivity } from '~/app/pages/Workspaces/Details/WorkspaceDetailsActivity';
 import { WorkspaceDetailsPodTemplate } from '~/app/pages/Workspaces/Details/WorkspaceDetailsPodTemplate';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
 type WorkspaceDetailsProps = {
-  workspace: Workspace;
+  workspace: WorkspacesWorkspace;
   onCloseClick: React.MouseEventHandler;
   // TODO: Uncomment when edit action is fully supported
   // onEditClick: React.MouseEventHandler;

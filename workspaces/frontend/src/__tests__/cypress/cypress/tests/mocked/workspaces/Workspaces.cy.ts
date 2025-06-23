@@ -1,4 +1,3 @@
-import type { Workspace } from '~/shared/api/backendApiTypes';
 import { home } from '~/__tests__/cypress/cypress/pages/home';
 import {
   mockWorkspaces,
@@ -6,9 +5,10 @@ import {
 } from '~/__tests__/cypress/cypress/tests/mocked/workspace.mock';
 import { mockNamespaces } from '~/__mocks__/mockNamespaces';
 import { mockBFFResponse } from '~/__mocks__/utils';
+import type { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
 // Helper function to validate the content of a single workspace row in the table
-const validateWorkspaceRow = (workspace: Workspace, index: number) => {
+const validateWorkspaceRow = (workspace: WorkspacesWorkspace, index: number) => {
   // Validate the workspace name
   cy.findByTestId(`workspace-row-${index}`)
     .find('[data-testid="workspace-name"]')

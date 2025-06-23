@@ -9,13 +9,14 @@ import {
   TabTitleText,
 } from '@patternfly/react-core';
 import { WorkspaceRedirectInformationView } from '~/app/pages/Workspaces/workspaceActions/WorkspaceRedirectInformationView';
-import { Workspace, WorkspacePauseState } from '~/shared/api/backendApiTypes';
 import { ActionButton } from '~/shared/components/ActionButton';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
+import { WorkspacePauseState } from '~/shared/api/backendApiTypes';
 
 interface StopActionAlertProps {
   onClose: () => void;
   isOpen: boolean;
-  workspace: Workspace | null;
+  workspace: WorkspacesWorkspace | null;
   onStop: () => Promise<WorkspacePauseState | void>;
   onUpdateAndStop: () => Promise<void>;
   onActionDone?: () => void;

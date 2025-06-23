@@ -1,14 +1,14 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Content } from '@patternfly/react-core';
-import { WorkspaceKind } from '~/shared/api/backendApiTypes';
 import useWorkspaceKinds from '~/app/hooks/useWorkspaceKinds';
 import { WorkspaceFormKindDetails } from '~/app/pages/Workspaces/Form/kind/WorkspaceFormKindDetails';
 import { WorkspaceFormKindList } from '~/app/pages/Workspaces/Form/kind/WorkspaceFormKindList';
 import { WorkspaceFormDrawer } from '~/app/pages/Workspaces/Form/WorkspaceFormDrawer';
+import { WorkspacekindsWorkspaceKind } from '~/generated/OpenApiTypes';
 
 interface WorkspaceFormKindSelectionProps {
-  selectedKind: WorkspaceKind | undefined;
-  onSelect: (kind: WorkspaceKind | undefined) => void;
+  selectedKind: WorkspacekindsWorkspaceKind | undefined;
+  onSelect: (kind: WorkspacekindsWorkspaceKind | undefined) => void;
 }
 
 const WorkspaceFormKindSelection: React.FunctionComponent<WorkspaceFormKindSelectionProps> = ({
@@ -26,7 +26,7 @@ const WorkspaceFormKindSelection: React.FunctionComponent<WorkspaceFormKindSelec
   }, []);
 
   const onClick = useCallback(
-    (kind?: WorkspaceKind) => {
+    (kind?: WorkspacekindsWorkspaceKind) => {
       setIsExpanded(true);
       onSelect(kind);
     },

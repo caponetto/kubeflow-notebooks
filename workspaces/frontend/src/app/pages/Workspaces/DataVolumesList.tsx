@@ -12,10 +12,10 @@ import {
   Tooltip,
 } from '@patternfly/react-core';
 import { DatabaseIcon, LockedIcon } from '@patternfly/react-icons';
-import { Workspace } from '~/shared/api/backendApiTypes';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
 interface DataVolumesListProps {
-  workspace: Workspace;
+  workspace: WorkspacesWorkspace;
 }
 
 export const DataVolumesList: React.FC<DataVolumesListProps> = ({ workspace }) => {

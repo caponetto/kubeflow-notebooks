@@ -8,13 +8,13 @@ import {
   ModalHeader,
   TabTitleText,
 } from '@patternfly/react-core';
-import { Workspace } from '~/shared/api/backendApiTypes';
 import { WorkspaceRedirectInformationView } from '~/app/pages/Workspaces/workspaceActions/WorkspaceRedirectInformationView';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
 interface RestartActionAlertProps {
   onClose: () => void;
   isOpen: boolean;
-  workspace: Workspace | null;
+  workspace: WorkspacesWorkspace | null;
 }
 
 export const WorkspaceRestartActionModal: React.FC<RestartActionAlertProps> = ({

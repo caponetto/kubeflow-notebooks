@@ -16,11 +16,11 @@ import {
 } from '@patternfly/react-core';
 import { EllipsisVIcon } from '@patternfly/react-icons';
 import { Table, TableVariant, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
-import { WorkspacePodVolumeMount } from '~/shared/api/backendApiTypes';
+import { WorkspacesPodVolumeMount } from '~/generated/OpenApiTypes';
 
 interface WorkspaceFormPropertiesVolumesProps {
-  volumes: WorkspacePodVolumeMount[];
-  setVolumes: (volumes: WorkspacePodVolumeMount[]) => void;
+  volumes: WorkspacesPodVolumeMount[];
+  setVolumes: (volumes: WorkspacesPodVolumeMount[]) => void;
 }
 
 export const WorkspaceFormPropertiesVolumes: React.FC<WorkspaceFormPropertiesVolumesProps> = ({
@@ -29,7 +29,7 @@ export const WorkspaceFormPropertiesVolumes: React.FC<WorkspaceFormPropertiesVol
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [formData, setFormData] = useState<WorkspacePodVolumeMount>({
+  const [formData, setFormData] = useState<WorkspacesPodVolumeMount>({
     pvcName: '',
     mountPath: '',
     readOnly: false,

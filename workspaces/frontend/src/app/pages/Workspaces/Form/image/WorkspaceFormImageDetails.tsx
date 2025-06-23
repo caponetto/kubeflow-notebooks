@@ -1,9 +1,9 @@
 import React from 'react';
 import { List, ListItem, Title } from '@patternfly/react-core';
-import { WorkspacePodConfigValue } from '~/shared/api/backendApiTypes';
+import { WorkspacekindsPodConfigValue } from '~/generated/OpenApiTypes';
 
 type WorkspaceFormImageDetailsProps = {
-  workspaceImage?: WorkspacePodConfigValue;
+  workspaceImage?: WorkspacekindsPodConfigValue;
 };
 
 export const WorkspaceFormImageDetails: React.FunctionComponent<WorkspaceFormImageDetailsProps> = ({

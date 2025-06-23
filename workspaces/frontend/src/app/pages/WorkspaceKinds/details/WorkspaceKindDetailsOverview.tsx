@@ -7,10 +7,10 @@ import {
   Divider,
   Brand,
 } from '@patternfly/react-core';
-import { WorkspaceKind } from '~/shared/api/backendApiTypes';
+import { WorkspacekindsWorkspaceKind } from '~/generated/OpenApiTypes';
 
 type WorkspaceDetailsOverviewProps = {
-  workspaceKind: WorkspaceKind;
+  workspaceKind: WorkspacekindsWorkspaceKind;
 };
 
 export const WorkspaceKindDetailsOverview: React.FunctionComponent<

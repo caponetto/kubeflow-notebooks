@@ -4,12 +4,12 @@ import useFetchState, {
   FetchStateCallbackPromise,
 } from '~/shared/utilities/useFetchState';
 import { useNotebookAPI } from '~/app/hooks/useNotebookAPI';
-import { Workspace } from '~/shared/api/backendApiTypes';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
-export const useWorkspacesByNamespace = (namespace: string): FetchState<Workspace[]> => {
+export const useWorkspacesByNamespace = (namespace: string): FetchState<WorkspacesWorkspace[]> => {
   const { api, apiAvailable } = useNotebookAPI();
 
-  const call = useCallback<FetchStateCallbackPromise<Workspace[]>>(
+  const call = useCallback<FetchStateCallbackPromise<WorkspacesWorkspace[]>>(
     (opts) => {
       if (!apiAvailable) {
         return Promise.reject(new Error('API not yet available'));
@@ -28,10 +28,10 @@ export const useWorkspacesByKind = (args: {
   namespace?: string;
   imageId?: string;
   podConfigId?: string;
-}): FetchState<Workspace[]> => {
+}): FetchState<WorkspacesWorkspace[]> => {
   const { kind, namespace, imageId, podConfigId } = args;
   const { api, apiAvailable } = useNotebookAPI();
-  const call = useCallback<FetchStateCallbackPromise<Workspace[]>>(
+  const call = useCallback<FetchStateCallbackPromise<WorkspacesWorkspace[]>>(
     async (opts) => {
       if (!apiAvailable) {
         throw new Error('API not yet available');

@@ -8,11 +8,10 @@ import {
 } from '~/shared/api/apiUtils';
 import { handleRestFailures } from '~/shared/api/errorUtils';
 import {
-  Namespace,
-  Workspace,
-  WorkspaceKind,
-  WorkspacePauseState,
-} from '~/shared/api/backendApiTypes';
+  NamespacesNamespace,
+  WorkspacekindsWorkspaceKind,
+  WorkspacesWorkspace,
+} from '~/generated/OpenApiTypes';
 import {
   CreateWorkspaceAPI,
   CreateWorkspaceKindAPI,
@@ -31,45 +30,46 @@ import {
   StartWorkspaceAPI,
   UpdateWorkspaceAPI,
   UpdateWorkspaceKindAPI,
-} from './callTypes';
+} from '~/shared/api/callTypes';
+import { WorkspacePauseState } from '~/shared/api/backendApiTypes';
 
 export const getHealthCheck: GetHealthCheckAPI = (hostPath) => (opts) =>
   handleRestFailures(restGET(hostPath, `/healthcheck`, {}, opts));
 
 export const listNamespaces: ListNamespacesAPI = (hostPath) => (opts) =>
   handleRestFailures(restGET(hostPath, `/namespaces`, {}, opts)).then((response) =>
-    extractNotebookResponse<Namespace[]>(response),
+    extractNotebookResponse<NamespacesNamespace[]>(response),
   );
 
 export const listAllWorkspaces: ListAllWorkspacesAPI = (hostPath) => (opts) =>
   handleRestFailures(restGET(hostPath, `/workspaces`, {}, opts)).then((response) =>
-    extractNotebookResponse<Workspace[]>(response),
+    extractNotebookResponse<WorkspacesWorkspace[]>(response),
   );
 
 export const listWorkspaces: ListWorkspacesAPI = (hostPath) => (opts, namespace) =>
   handleRestFailures(restGET(hostPath, `/workspaces/${namespace}`, {}, opts)).then((response) =>
-    extractNotebookResponse<Workspace[]>(response),
+    extractNotebookResponse<WorkspacesWorkspace[]>(response),
   );
 
 export const getWorkspace: GetWorkspaceAPI = (hostPath) => (opts, namespace, workspace) =>
   handleRestFailures(restGET(hostPath, `/workspaces/${namespace}/${workspace}`, {}, opts)).then(
-    (response) => extractNotebookResponse<Workspace>(response),
+    (response) => extractNotebookResponse<WorkspacesWorkspace>(response),
   );
 
 export const createWorkspace: CreateWorkspaceAPI = (hostPath) => (opts, namespace, data) =>
   handleRestFailures(restCREATE(hostPath, `/workspaces/${namespace}`, data, {}, opts)).then(
-    (response) => extractNotebookResponse<Workspace>(response),
+    (response) => extractNotebookResponse<WorkspacesWorkspace>(response),
   );
 
 export const updateWorkspace: UpdateWorkspaceAPI =
   (hostPath) => (opts, namespace, workspace, data) =>
     handleRestFailures(
       restUPDATE(hostPath, `/workspaces/${namespace}/${workspace}`, data, {}, opts),
-    ).then((response) => extractNotebookResponse<Workspace>(response));
+    ).then((response) => extractNotebookResponse<WorkspacesWorkspace>(response));
 
 export const patchWorkspace: PatchWorkspaceAPI = (hostPath) => (opts, namespace, workspace, data) =>
   handleRestFailures(restPATCH(hostPath, `/workspaces/${namespace}/${workspace}`, data, opts)).then(
-    (response) => extractNotebookResponse<Workspace>(response),
+    (response) => extractNotebookResponse<WorkspacesWorkspace>(response),
   );
 
 export const deleteWorkspace: DeleteWorkspaceAPI = (hostPath) => (opts, namespace, workspace) =>
@@ -87,27 +87,27 @@ export const startWorkspace: StartWorkspaceAPI = (hostPath) => (opts, namespace,
 
 export const listWorkspaceKinds: ListWorkspaceKindsAPI = (hostPath) => (opts) =>
   handleRestFailures(restGET(hostPath, `/workspacekinds`, {}, opts)).then((response) =>
-    extractNotebookResponse<WorkspaceKind[]>(response),
+    extractNotebookResponse<WorkspacekindsWorkspaceKind[]>(response),
   );
 
 export const getWorkspaceKind: GetWorkspaceKindAPI = (hostPath) => (opts, kind) =>
   handleRestFailures(restGET(hostPath, `/workspacekinds/${kind}`, {}, opts)).then((response) =>
-    extractNotebookResponse<WorkspaceKind>(response),
+    extractNotebookResponse<WorkspacekindsWorkspaceKind>(response),
   );
 
 export const createWorkspaceKind: CreateWorkspaceKindAPI = (hostPath) => (opts, data) =>
   handleRestFailures(restCREATE(hostPath, `/workspacekinds`, data, {}, opts)).then((response) =>
-    extractNotebookResponse<WorkspaceKind>(response),
+    extractNotebookResponse<WorkspacekindsWorkspaceKind>(response),
   );
 
 export const updateWorkspaceKind: UpdateWorkspaceKindAPI = (hostPath) => (opts, kind, data) =>
   handleRestFailures(restUPDATE(hostPath, `/workspacekinds/${kind}`, data, {}, opts)).then(
-    (response) => extractNotebookResponse<WorkspaceKind>(response),
+    (response) => extractNotebookResponse<WorkspacekindsWorkspaceKind>(response),
   );
 
 export const patchWorkspaceKind: PatchWorkspaceKindAPI = (hostPath) => (opts, kind, data) =>
   handleRestFailures(restPATCH(hostPath, `/workspacekinds/${kind}`, data, opts)).then((response) =>
-    extractNotebookResponse<WorkspaceKind>(response),
+    extractNotebookResponse<WorkspacekindsWorkspaceKind>(response),
   );
 
 export const deleteWorkspaceKind: DeleteWorkspaceKindAPI = (hostPath) => (opts, kind) =>

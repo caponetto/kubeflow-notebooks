@@ -1,11 +1,11 @@
 import {
-  WorkspaceImageConfigValue,
-  WorkspaceKind,
-  WorkspacePodConfigValue,
-  WorkspacePodVolumeMount,
-  WorkspacePodSecretMount,
-  Workspace,
-} from '~/shared/api/backendApiTypes';
+  WorkspacekindsImageConfigValue,
+  WorkspacekindsPodConfigValue,
+  WorkspacekindsWorkspaceKind,
+  WorkspacesPodSecretMount,
+  WorkspacesPodVolumeMount,
+  WorkspacesWorkspace,
+} from '~/generated/OpenApiTypes';
 
 export interface WorkspaceColumnDefinition {
   name: string;
@@ -24,20 +24,20 @@ export interface WorkspaceFormProperties {
   workspaceName: string;
   deferUpdates: boolean;
   homeDirectory: string;
-  volumes: WorkspacePodVolumeMount[];
-  secrets: WorkspacePodSecretMount[];
+  volumes: WorkspacesPodVolumeMount[];
+  secrets: WorkspacesPodSecretMount[];
 }
 
 export interface WorkspaceFormData {
-  kind: WorkspaceKind | undefined;
-  image: WorkspaceImageConfigValue | undefined;
-  podConfig: WorkspacePodConfigValue | undefined;
+  kind: WorkspacekindsWorkspaceKind | undefined;
+  image: WorkspacekindsImageConfigValue | undefined;
+  podConfig: WorkspacekindsPodConfigValue | undefined;
   properties: WorkspaceFormProperties;
 }
 
 export interface WorkspaceCountPerOption {
   count: number;
-  countByImage: Record<WorkspaceImageConfigValue['id'], number>;
-  countByPodConfig: Record<WorkspacePodConfigValue['id'], number>;
-  countByNamespace: Record<Workspace['namespace'], number>;
+  countByImage: Record<WorkspacekindsImageConfigValue['id'], number>;
+  countByPodConfig: Record<WorkspacekindsPodConfigValue['id'], number>;
+  countByNamespace: Record<WorkspacesWorkspace['namespace'], number>;
 }

@@ -9,10 +9,10 @@ import {
   Card,
   CardHeader,
 } from '@patternfly/react-core';
-import { WorkspaceKind } from '~/shared/api/backendApiTypes';
 import Filter, { FilteredColumn, FilterRef } from '~/shared/components/Filter';
 import CustomEmptyState from '~/shared/components/CustomEmptyState';
 import { defineDataFields, FilterableDataFieldKey } from '~/app/filterableDataHelper';
+import { WorkspacekindsWorkspaceKind } from '~/generated/OpenApiTypes';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { fields, filterableLabelMap } = defineDataFields({
@@ -22,9 +22,9 @@ const { fields, filterableLabelMap } = defineDataFields({
 type FilterableDataFieldKeys = FilterableDataFieldKey<typeof fields>;
 
 type WorkspaceFormKindListProps = {
-  allWorkspaceKinds: WorkspaceKind[];
-  selectedKind: WorkspaceKind | undefined;
-  onSelect: (workspaceKind: WorkspaceKind | undefined) => void;
+  allWorkspaceKinds: WorkspacekindsWorkspaceKind[];
+  selectedKind: WorkspacekindsWorkspaceKind | undefined;
+  onSelect: (workspaceKind: WorkspacekindsWorkspaceKind | undefined) => void;
 };
 
 export const WorkspaceFormKindList: React.FunctionComponent<WorkspaceFormKindListProps> = ({

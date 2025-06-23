@@ -12,12 +12,12 @@ import {
 } from '@patternfly/react-core';
 import { WorkspaceFormImageDetails } from '~/app/pages/Workspaces/Form/image/WorkspaceFormImageDetails';
 import { WorkspaceFormPropertiesVolumes } from '~/app/pages/Workspaces/Form/properties/WorkspaceFormPropertiesVolumes';
+import { WorkspacekindsImageConfigValue } from '~/generated/OpenApiTypes';
 import { WorkspaceFormProperties } from '~/app/types';
-import { WorkspaceImageConfigValue } from '~/shared/api/backendApiTypes';
 import { WorkspaceFormPropertiesSecrets } from './WorkspaceFormPropertiesSecrets';
 
 interface WorkspaceFormPropertiesSelectionProps {
-  selectedImage: WorkspaceImageConfigValue | undefined;
+  selectedImage: WorkspacekindsImageConfigValue | undefined;
   selectedProperties: WorkspaceFormProperties;
   onSelect: (properties: WorkspaceFormProperties) => void;
 }

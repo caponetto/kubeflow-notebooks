@@ -20,7 +20,6 @@ import {
   t_global_font_size_4xl as LargeFontSize,
   t_global_font_weight_heading_bold as BoldFontWeight,
 } from '@patternfly/react-tokens';
-import { Workspace } from '~/shared/api/backendApiTypes';
 import {
   countGpusFromWorkspaces,
   filterIdleWorkspacesWithGpu,
@@ -29,11 +28,12 @@ import {
   YesNoValue,
 } from '~/shared/utilities/WorkspaceUtils';
 import { WorkspaceTableFilteredColumn } from '~/app/components/WorkspaceTable';
+import { WorkspacesWorkspace } from '~/generated/OpenApiTypes';
 
 const TOP_GPU_CONSUMERS_LIMIT = 2;
 
 interface WorkspaceKindSummaryExpandableCardProps {
-  workspaces: Workspace[];
+  workspaces: WorkspacesWorkspace[];
   isExpanded: boolean;
   onExpandToggle: () => void;
   onAddFilter: (filter: WorkspaceTableFilteredColumn) => void;

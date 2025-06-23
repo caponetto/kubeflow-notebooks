@@ -7,10 +7,10 @@ import {
   MenuToggleElement,
   MenuToggleAction,
 } from '@patternfly/react-core';
-import { Workspace, WorkspaceState } from '~/shared/api/backendApiTypes';
+import { WorkspacesWorkspace, WorkspacesWorkspaceState } from '~/generated/OpenApiTypes';
 
 type WorkspaceConnectActionProps = {
-  workspace: Workspace;
+  workspace: WorkspacesWorkspace;
 };
 
 export const WorkspaceConnectAction: React.FunctionComponent<WorkspaceConnectActionProps> = ({
@@ -54,7 +54,7 @@ export const WorkspaceConnectAction: React.FunctionComponent<WorkspaceConnectAct
           ref={toggleRef}
           onClick={onToggleClick}
           isExpanded={open}
-          isDisabled={workspace.state !== WorkspaceState.WorkspaceStateRunning}
+          isDisabled={workspace.state !== WorkspacesWorkspaceState.WorkspaceStateRunning}
           splitButtonItems={[
             <MenuToggleAction
               id="connect-endpoint-button"

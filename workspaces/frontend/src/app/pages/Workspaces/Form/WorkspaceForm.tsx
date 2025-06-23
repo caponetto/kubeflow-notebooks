@@ -17,10 +17,10 @@ import { WorkspaceFormKindSelection } from '~/app/pages/Workspaces/Form/kind/Wor
 import { WorkspaceFormPodConfigSelection } from '~/app/pages/Workspaces/Form/podConfig/WorkspaceFormPodConfigSelection';
 import { WorkspaceFormPropertiesSelection } from '~/app/pages/Workspaces/Form/properties/WorkspaceFormPropertiesSelection';
 import { WorkspaceFormData } from '~/app/types';
-import { WorkspaceCreate } from '~/shared/api/backendApiTypes';
 import useWorkspaceFormData from '~/app/hooks/useWorkspaceFormData';
 import { useTypedNavigate } from '~/app/routerHelper';
 import { useWorkspaceFormLocationData } from '~/app/hooks/useWorkspaceFormLocationData';
+import { WorkspacesWorkspaceCreate } from '~/generated/OpenApiTypes';
 
 enum WorkspaceFormSteps {
   KindSelection,
@@ -100,7 +100,7 @@ const WorkspaceForm: React.FC = () => {
     }
 
     // TODO: Prepare WorkspaceUpdate data accordingly when BE supports it
-    const submitData: WorkspaceCreate = {
+    const submitData: WorkspacesWorkspaceCreate = {
       name: data.properties.workspaceName,
       kind: data.kind.name,
       deferUpdates: data.properties.deferUpdates,
@@ -127,7 +127,7 @@ const WorkspaceForm: React.FC = () => {
     try {
       if (mode === 'edit') {
         const updateWorkspace = await api.updateWorkspace({}, submitData.name, namespace, {
-          data: submitData,
+          data: {},
         });
         // TODO: alert user about success
         console.info('Workspace updated:', JSON.stringify(updateWorkspace));

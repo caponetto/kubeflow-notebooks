@@ -4,12 +4,12 @@ import { WorkspaceFormPodConfigDetails } from '~/app/pages/Workspaces/Form/podCo
 import { WorkspaceFormPodConfigList } from '~/app/pages/Workspaces/Form/podConfig/WorkspaceFormPodConfigList';
 import { FilterByLabels } from '~/app/pages/Workspaces/Form/labelFilter/FilterByLabels';
 import { WorkspaceFormDrawer } from '~/app/pages/Workspaces/Form/WorkspaceFormDrawer';
-import { WorkspacePodConfigValue } from '~/shared/api/backendApiTypes';
+import { WorkspacekindsPodConfigValue } from '~/generated/OpenApiTypes';
 
 interface WorkspaceFormPodConfigSelectionProps {
-  podConfigs: WorkspacePodConfigValue[];
-  selectedPodConfig: WorkspacePodConfigValue | undefined;
-  onSelect: (podConfig: WorkspacePodConfigValue | undefined) => void;
+  podConfigs: WorkspacekindsPodConfigValue[];
+  selectedPodConfig: WorkspacekindsPodConfigValue | undefined;
+  onSelect: (podConfig: WorkspacekindsPodConfigValue | undefined) => void;
 }
 
 const WorkspaceFormPodConfigSelection: React.FunctionComponent<
@@ -26,7 +26,7 @@ const WorkspaceFormPodConfigSelection: React.FunctionComponent<
   }, []);
 
   const onClick = useCallback(
-    (podConfig?: WorkspacePodConfigValue) => {
+    (podConfig?: WorkspacekindsPodConfigValue) => {
       setIsExpanded(true);
       onSelect(podConfig);
     },

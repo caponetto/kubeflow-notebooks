@@ -16,6 +16,7 @@
     "build:bundle-analyze": "webpack-bundle-analyzer ./bundle.stats.json",
     "build:clean": "rimraf ./dist",
     "build:prod": "webpack --config ./config/webpack.prod.js",
+    "generate:api": "swagger-typescript-api generate -p ../backend/openapi/swagger.yaml -o ./src/generated -n OpenApiTypes.ts --sort-types --no-client && npm run prettier",
     "start:dev": "webpack serve --hot --color --config ./config/webpack.dev.js",
     "start:dev:mock": "cross-env MOCK_API_ENABLED=true npm run start:dev",
     "test": "run-s test:lint test:unit test:cypress-ci",
@@ -129,6 +130,7 @@
     "eslint-plugin-no-relative-import-paths": "^1.5.2",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0"
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "swagger-typescript-api": "13.1.3"
   }
 }
