@@ -6,6 +6,7 @@ import {
 } from '@patternfly/react-core/dist/esm/components/Dropdown';
 import { MenuToggle } from '@patternfly/react-core/dist/esm/components/MenuToggle';
 import { Flex, FlexItem } from '@patternfly/react-core/dist/esm/layouts/Flex';
+import { ButtonVariant } from '@patternfly/react-core/dist/esm/components/Button';
 
 interface WorkspaceDetailsActionsProps {
   // TODO: Uncomment when edit action is fully supported
@@ -29,7 +30,7 @@ export const WorkspaceDetailsActions: React.FC<WorkspaceDetailsActionsProps> = (
           popperProps={{ position: 'end' }}
           toggle={(toggleRef) => (
             <MenuToggle
-              variant="primary"
+              variant={ButtonVariant.secondary}
               ref={toggleRef}
               onClick={() => setOpen(!isOpen)}
               isExpanded={isOpen}

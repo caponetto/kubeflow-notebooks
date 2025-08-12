@@ -9,6 +9,7 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom';
+import { URL_PREFIX } from '~/shared/utilities/const';
 import {
   AppRouteKey,
   AppRoutePaths,
@@ -62,8 +63,8 @@ type NavigateOptions<T extends AppRouteKey> = CommonNavigateOptions &
  *   Go to my route
  * </Link>
  */
-export function buildPath<T extends AppRouteKey>(to: T, params: RouteParamsMap[T]): string {
-  return generatePath(AppRoutePaths[to], params as RouteParamsMap[T]);
+export function buildPath<T extends AppRouteKey>(to: T, params?: RouteParamsMap[T]): string {
+  return URL_PREFIX + generatePath(AppRoutePaths[to], params as RouteParamsMap[T]);
 }
 
 /**
@@ -175,7 +176,7 @@ export function useTypedNavigate() {
     const opts = (options ?? {}) as NavigateOptions<T>;
 
     const query = 'searchParams' in opts ? buildSearchParams(opts.searchParams) : '';
-    const path = 'params' in opts ? buildPath(to, opts.params) : pathTemplate;
+    const path = 'params' in opts ? buildPath(to, opts.params) : URL_PREFIX + pathTemplate;
     const state = 'state' in opts ? opts.state : undefined;
     const fullPath = path + query;
 

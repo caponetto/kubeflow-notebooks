@@ -4,8 +4,8 @@ import {
   SearchInputProps,
 } from '@patternfly/react-core/dist/esm/components/SearchInput';
 import { TextInput } from '@patternfly/react-core/dist/esm/components/TextInput';
-import FormFieldset from 'app/components/FormFieldset';
-import { isMUITheme } from 'app/const';
+import { useThemeContext } from 'mod-arch-shared';
+import FormFieldset from '~/app/components/FormFieldset';
 
 type ThemeAwareSearchInputProps = Omit<SearchInputProps, 'onChange' | 'onClear'> & {
   onChange: (value: string) => void; // Simplified onChange signature
@@ -27,7 +27,8 @@ const ThemeAwareSearchInput: React.FC<ThemeAwareSearchInputProps> = ({
   'data-testid': dataTestId,
   ...rest
 }) => {
-  if (isMUITheme()) {
+  const { isMUITheme } = useThemeContext();
+  if (isMUITheme) {
     // Render MUI version using TextInput + FormFieldset
     return (
       <FormFieldset

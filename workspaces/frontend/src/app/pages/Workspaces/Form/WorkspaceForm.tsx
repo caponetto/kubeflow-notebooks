@@ -19,6 +19,7 @@ import {
   DrawerPanelContent,
 } from '@patternfly/react-core/dist/esm/components/Drawer';
 import { Title } from '@patternfly/react-core/dist/esm/components/Title';
+import { useNotification } from 'mod-arch-shared';
 import useGenericObjectState from '~/app/hooks/useGenericObjectState';
 import { useNotebookAPI } from '~/app/hooks/useNotebookAPI';
 import { WorkspaceFormImageSelection } from '~/app/pages/Workspaces/Form/image/WorkspaceFormImageSelection';
@@ -58,6 +59,7 @@ const stepDescriptions: { [key in WorkspaceFormSteps]?: string } = {
 
 const WorkspaceForm: React.FC = () => {
   const navigate = useTypedNavigate();
+  const notification = useNotification();
   const { api } = useNotebookAPI();
 
   const { mode, namespace, workspaceName } = useWorkspaceFormLocationData();
@@ -182,8 +184,7 @@ const WorkspaceForm: React.FC = () => {
         const workspaceEnvelope = await api.workspaces.createWorkspace(namespace, {
           data: submitData,
         });
-        // TODO: alert user about success
-        console.info('New workspace created:', JSON.stringify(workspaceEnvelope.data));
+        notification.success(`Workspace '${workspaceEnvelope.data.name}' created successfully`);
       }
 
       navigate('workspaces');
@@ -193,7 +194,7 @@ const WorkspaceForm: React.FC = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [data, mode, navigate, api, namespace]);
+  }, [data, mode, navigate, api, namespace, notification]);
 
   const cancel = useCallback(() => {
     navigate('workspaces');

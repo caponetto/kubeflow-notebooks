@@ -7,7 +7,10 @@ import {
   createComparativeValue,
 } from '~/__tests__/unit/testUtils/hooks';
 
-global.TextEncoder = TextEncoder;
+global.TextEncoder = TextEncoder as unknown as {
+  new (): TextEncoder;
+  prototype: TextEncoder;
+};
 
 const tryExpect = (expectFn: () => void) => {
   try {
